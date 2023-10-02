@@ -11,5 +11,6 @@ namespace FillmeApiPratica.Data.Dtos
         public string Genero { get; set; }
 
         public DateTime horaConsulta { get; set; } = DateTime.Now;
+        public ICollection<ReadSessaoDto> Sessoes { get; set; }
     }
 }

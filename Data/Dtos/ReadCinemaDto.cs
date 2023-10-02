@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using FillmeApiPratica.Model;
+using System.ComponentModel.DataAnnotations;
 
 namespace FillmeApiPratica.Data.Dtos
 {
@@ -6,6 +7,7 @@ namespace FillmeApiPratica.Data.Dtos
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public ReadEnderecoDto ReadEnderecoDto { get; set; }
+        public ReadEnderecoDto Endereco { get; set; }
+        public ICollection<ReadSessaoDto> Sessoes { get; set; }
     }
 }

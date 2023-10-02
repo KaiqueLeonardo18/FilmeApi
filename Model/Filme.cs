@@ -18,5 +18,7 @@ namespace FillmeApiPratica.Model
         [Required]
         [MaxLength(30, ErrorMessage = "O Genero nao pode ter mais de 30 caracteres")]
         public string Genero { get; set; }
+
+        public virtual ICollection<Sessao> Sessoes { get; set; }
     }
 }

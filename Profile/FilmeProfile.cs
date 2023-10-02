@@ -11,5 +11,6 @@ public class FilmeProfile : AutoMapper.Profile
         CreateMap<CreateFilmeDto, Filme>();
         CreateMap<UpdateFilmeDto, Filme>();
         CreateMap<Filme, ReadFilmeDto>();
+        CreateMap<Cinema, ReadCinemaDto>().ForMember(filmeDto => filmeDto.Endereco, opt => opt.MapFrom(filmeDto => filmeDto.Endereco));
     }
 }
