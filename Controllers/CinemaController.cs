@@ -3,6 +3,7 @@ using FillmeApiPratica.Data;
 using FillmeApiPratica.Data.Dtos;
 using FillmeApiPratica.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FillmeApiPratica.Controllers
 {
@@ -29,9 +30,13 @@ namespace FillmeApiPratica.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ReadCinemaDto> RecuperaCinemas()
+        public IEnumerable<ReadCinemaDto> RecuperaCinemas([FromQuery] int? enderecoId = null)
         {
-            return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.ToList());
+            if(enderecoId == null)
+            {
+                return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.ToList());
+            }
+            return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.FromSqlRaw($"SELECT Id, Nome, EnderecoId FROM Cinemas WHERE cinemas.EnderecoId = {enderecoId}").ToList());
         }
 
         [HttpGet("{id}")]
