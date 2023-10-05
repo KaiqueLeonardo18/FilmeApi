@@ -60,7 +60,7 @@ namespace FillmeApiPratica.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeletaEndereco(int id)
         {
             Endereco endereco = _context.Enderecos.FirstOrDefault(endereco => endereco.Id == id);
